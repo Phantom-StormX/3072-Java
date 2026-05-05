@@ -3,9 +3,9 @@
 A Java GUI 3036 game built with javaFX, focused on clear structure, and an easy-to-use interface.
 
 ## How to play
-use your arrow keys(or WASD) to move blocks up, down, left and right
+- use your arrow keys(or WASD) to move blocks up, down, left and right
   - Once you move a your arrow key, all the blocks in the certain column or row will move. 
-merge tiles with their corresponding number until you get 3036(ex: 3 with 3 and 18 with 18)
+- merge tiles with their corresponding number until you get 3036(ex: 3 with 3 and 18 with 18)
 
 ## Features
 

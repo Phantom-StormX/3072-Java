@@ -24,5 +24,6 @@ public class GameEngine {
            }
            Grid.add(row); // actually initializes the rows(columns are connected to rows)
        }
+
    }
 }

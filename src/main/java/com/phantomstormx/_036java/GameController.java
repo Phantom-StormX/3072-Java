@@ -10,7 +10,8 @@ public class GameController {
     @FXML private StackPane tile5, tile6, tile7, tile8;
     @FXML private StackPane tile9, tile10, tile11, tile12;
     @FXML private StackPane tile13, tile14, tile15, tile16;
-    @FXML private StackPane[][] tiles;
+    @FXML private StackPane[][] grid;
+
     private GameEngine engine;
 
 }

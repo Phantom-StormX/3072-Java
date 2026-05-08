@@ -53,22 +53,58 @@ public class GameEngine {
         return result;
     }
 
-    public boolean moveLeft() {
+    public boolean moveLeft()  {
         boolean moved = false;
-
+        for (int r = 0; r < 4; r++) {
+            int[] merged = slideAndMerge(grid[r]);
+            if (!Arrays.equals(grid[r], merged)) moved = true;
+            grid[r] = merged;
+        }
+        return moved;
     }
-
     public boolean moveRight() {
         boolean moved = false;
+        for (int r = 0; r < 4; r++) {
+            int[] merged = reverse(slideAndMerge(reverse(grid[r])));
+            if (!Arrays.equals(grid[r], merged)) moved = true;
+            grid[r] = merged;
+        }
+        return moved;
     }
-
     public boolean moveUp() {
         boolean moved = false;
+        for (int c = 0; c < 4; c++) {
+            int[] col = getCol(c);
+            int[] merged = slideAndMerge(col);
+            if (!Arrays.equals(col, merged)) moved = true;
+            setCol(c, merged);
+        }
+        return moved;
     }
-
     public boolean moveDown() {
         boolean moved = false;
+        for (int c = 0; c < 4; c++) {
+            int[] col = getCol(c);
+            int[] merged = reverse(slideAndMerge(reverse(col)));
+            if (!Arrays.equals(col, merged)) moved = true;
+            setCol(c, merged);
+        }
+        return moved;
+    }
+    private int[] reverse(int[] a) {
+        int[] r = new int[a.length];
+        for (int i = 0; i < a.length; i++) r[i] = a[a.length - 1 - i];
+        return r;
+    }
+    private int[] getCol(int c) {
+        int[] col = new int[4];
+        for (int r = 0; r < 4; r++) col[r] = grid[r][c];
+        return col;
+    }
+    private void setCol(int c, int[] col) {
+        for (int r = 0; r < 4; r++) grid[r][c] = col[r];
     }
 
     // Compact non-zeros left, merge equal adjacent pairs, compact again
+
 }

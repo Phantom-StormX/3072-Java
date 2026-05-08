@@ -127,6 +127,4 @@ public class GameEngine {
     public int[][] getGrid(){
         return grid; }
 
-    // Compact non-zeros left, merge equal adjacent pairs, compact again
-
 }

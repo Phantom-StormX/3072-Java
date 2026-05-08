@@ -9,7 +9,8 @@ import java.io.IOException;
 
 public class Main extends Application {
     @Override
-    public void start(Stage stage) throws IOException {
+    public void start(Stage stage) throws IOException { //sets components for the stage
+        //gets additional information from the game FXML file
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("Game-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 400, 500);
         stage.setScene(scene);

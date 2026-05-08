@@ -1,4 +1,5 @@
 package com.phantomstormx._036java;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyEvent;
@@ -64,13 +65,17 @@ public class GameController {
             case 6    -> "#b6e3f5ff";
             case 12   -> "#70b2f1ff";
             case 24   -> "#5b94ecff";
-            case 48   -> "#f67c5f";
-            case 96   -> "#f65e3b";
-            case 192  -> "#edcf72";
-            case 384  -> "#edcc61";
-            case 768  -> "#edc850";
-            case 1536 -> "#edc53f";
-            default   -> "#3c3a32";
+            case 48   -> "#4276c7ff";
+            case 96   -> "#275cacff";
+            case 192  -> "#004cc5ff";
+            case 384  -> "#0062ffff";
+            case 768  -> "#0e78b8ff";
+            case 1536 -> "#1889ceff";
+            default   -> "#009fffff";
         };
+    }
+
+    public void themeChange(ActionEvent actionEvent) {
+
     }
 }

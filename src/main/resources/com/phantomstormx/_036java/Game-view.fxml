@@ -1,13 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="400.0" spacing="20.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.phantomstormx._036java.GameController">
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="569.0" prefWidth="400.0" spacing="20.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.phantomstormx._036java.GameController">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
-    <BorderPane prefHeight="200.0" prefWidth="200.0" VBox.vgrow="NEVER" />
+   <Label alignment="CENTER" prefHeight="72.0" prefWidth="360.0" text="             3056             " textAlignment="CENTER" underline="true">
+      <font>
+         <Font size="42.0" />
+      </font>
+   </Label>
+   <Button mnemonicParsing="false" text="Restart" />
+    <HBox prefHeight="29.0" prefWidth="360.0">
+        <children>
+            <SplitMenuButton mnemonicParsing="false" onAction="#themeChange" prefHeight="26.0" prefWidth="106.0" text="Theme">
+                <items>
+                    <MenuItem mnemonicParsing="false" text="Ocean" />
+                    <MenuItem mnemonicParsing="false" text="Space" />
+                    <MenuItem mnemonicParsing="false" text="Empty" />
+                </items>
+            </SplitMenuButton>
+            <Separator orientation="VERTICAL" prefHeight="200.0" />
+            <TextField prefHeight="26.0" prefWidth="123.0" text="Score:" />
+            <Separator orientation="VERTICAL" prefHeight="26.0" prefWidth="1.0" />
+            <TextField prefHeight="26.0" prefWidth="132.0" />
+        </children>
+    </HBox>
 
     <GridPane alignment="BOTTOM_CENTER" gridLinesVisible="true" prefHeight="403.0" prefWidth="306.0" VBox.vgrow="NEVER">
         <columnConstraints>

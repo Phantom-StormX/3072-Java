@@ -105,6 +105,9 @@ public class GameEngine {
         for (int r = 0; r < 4; r++) grid[r][c] = col[r];
     }
 
+    public int[][] getGrid(){
+        return grid; }
+
     // Compact non-zeros left, merge equal adjacent pairs, compact again
 
 }

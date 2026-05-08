@@ -14,6 +14,7 @@ public class GameEngine {
     int[][] grid = new int[4][4]; // creates a grid with 4 rows and 4 columns
     Random rand = new Random(); // self explainable
 
+    //spawns in 2 tiles @the beginning of the game
     public GameEngine() {
         spawnTile();
         spawnTile();
@@ -47,60 +48,78 @@ public class GameEngine {
                 i++; // skips to the next index so that it does not accidentally double merge
             }
         }
+        //filters out 0 and returns and array up to four characters
         int[] result = new int[4];
         idx = 0;
         for (int v : packed) if (v != 0) result[idx++] = v;
         return result;
     }
 
-    public boolean moveLeft()  {
+    //Controls the movements for the left arrow
+    public boolean moveLeft() {
         boolean moved = false;
         for (int r = 0; r < 4; r++) {
             int[] merged = slideAndMerge(grid[r]);
+            //identifies whether a movement or merge happened or not
             if (!Arrays.equals(grid[r], merged)) moved = true;
             grid[r] = merged;
         }
         return moved;
     }
+
+    //Controls the movements for the right arrow key
     public boolean moveRight() {
         boolean moved = false;
         for (int r = 0; r < 4; r++) {
             int[] merged = reverse(slideAndMerge(reverse(grid[r])));
+            //identifies whether a movement or merge happened or not
             if (!Arrays.equals(grid[r], merged)) moved = true;
             grid[r] = merged;
         }
         return moved;
     }
+
+    //Controls the movements for the up arrow key
     public boolean moveUp() {
         boolean moved = false;
         for (int c = 0; c < 4; c++) {
             int[] col = getCol(c);
             int[] merged = slideAndMerge(col);
+            //identifies whether a movement or merge happened or not
             if (!Arrays.equals(col, merged)) moved = true;
             setCol(c, merged);
         }
         return moved;
     }
+
+    //Controls the movements for the up arrow key
     public boolean moveDown() {
         boolean moved = false;
         for (int c = 0; c < 4; c++) {
             int[] col = getCol(c);
             int[] merged = reverse(slideAndMerge(reverse(col)));
+            //identifies whether a movement or merge happened or not
             if (!Arrays.equals(col, merged)) moved = true;
             setCol(c, merged);
         }
         return moved;
     }
+
+    //creates and returns a new array in which is reversed from og input
     private int[] reverse(int[] a) {
         int[] r = new int[a.length];
         for (int i = 0; i < a.length; i++) r[i] = a[a.length - 1 - i];
         return r;
     }
-    private int[] getCol(int c) {
+
+    //Extracts a specific column from a 2D array and returns as a 1D array
+    private int[] getCol(int c) { // creates a 4-element array, loops rows, & copies values
         int[] col = new int[4];
         for (int r = 0; r < 4; r++) col[r] = grid[r][c];
         return col;
     }
+
+    //updates a specific column in a 2D array with values in provided array
     private void setCol(int c, int[] col) {
         for (int r = 0; r < 4; r++) grid[r][c] = col[r];
     }

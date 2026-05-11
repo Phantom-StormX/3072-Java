@@ -66,4 +66,5 @@ This helps keep the interface organized and easier to resize or maintain.
 - https://hoangsonww.github.io/Game-2048-JavaFX/
 - https://projectgurukul.org/java-2048-game/
 - https://www.instructables.com/Program-Your-Own-2048-Game-WJava/
+- Used replit AI for a lot of debugging in the engine and partially in the controller parts of this game
 - @DaNoob8157 for README layout, thanks :)

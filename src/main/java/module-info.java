@@ -1,6 +1,7 @@
 module com.phantomstormx._036java {
     requires javafx.controls;
     requires javafx.fxml;
+    requires java.desktop;
 
 
     opens com.phantomstormx._036java to javafx.fxml;

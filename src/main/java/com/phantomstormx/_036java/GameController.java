@@ -10,37 +10,38 @@ import javafx.scene.layout.StackPane;
 
 public class GameController {
 
+    // initializes objects from scene builder to controller
     @FXML private StackPane tile1,  tile2,  tile3,  tile4;
     @FXML private StackPane tile5,  tile6,  tile7,  tile8;
     @FXML private StackPane tile9,  tile10, tile11, tile12;
     @FXML private StackPane tile13, tile14, tile15, tile16;
-    @FXML private Button restart;
+    @FXML private Button playAgain;
     @FXML private TextField score;
-    @FXML private SplitMenuButton themeChange;
-
     private GameEngine engine;
     @FXML
     private StackPane[][] tiles;
 
     @FXML
     public void initialize() {
-        engine = new GameEngine();// start the engine (spawns 2 tiles)
-        // maps the 16 child StackPane(aka tiles) into a 2D array
-        tiles = new StackPane[][] {
+        engine = new GameEngine(); // starts the engine (spawns 2 tiles)
+
+        tiles = new StackPane[][] { // maps the 16 child StackPane(aka tiles) into a 2D array
                 { tile1,  tile2,  tile3,  tile4  },
                 { tile5,  tile6,  tile7,  tile8  },
                 { tile9,  tile10, tile11, tile12 },
                 { tile13, tile14, tile15, tile16 }
         };
 
-        // This ensures the key listener is added only after tile1 which handles  keyboard events in JavaFX, stops the event from reaching any further nodes or handlers
+        /*
+        This ensures that the key listener is added only after tile1 spawns which handles keyboard events in JavaFX,
+        stops the event from reaching any further nodes or handlers
+         */
         tile1.sceneProperty().addListener((obs, oldScene, newScene) -> {
             if (newScene != null) {
-                // intercepts events during the early "capture" phase of the event dispatch chain,
-                newScene.addEventFilter(KeyEvent.KEY_PRESSED, this::handleKeyPress);
+                newScene.addEventFilter(KeyEvent.KEY_PRESSED, this::handleKeyPress); // intercepts events during the early "capture" phase of the event dispatch chain
             }
         });
-        render();
+        render(); // updates display and graphics
     }
 
     public void handleKeyPress(KeyEvent e) { // all key events, actual initializer is in main
@@ -51,7 +52,7 @@ public class GameController {
             }
         }
 
-        boolean moved = switch (e.getCode()) {
+        boolean moved = switch (e.getCode()) { // yoinks the logic about movement from engine and initializes it
             case LEFT  -> engine.moveLeft();
             case RIGHT -> engine.moveRight();
             case UP    -> engine.moveUp();
@@ -60,11 +61,11 @@ public class GameController {
         };
         if (moved) { // SPAWNS THE TILES YAYAYAAYYY
             engine.spawnTile();
-            render();
+            render(); // updates display
         }
     }
 
-    // Reads the engine's grid and redraws every tile
+    // Reads the engine's grid and redraws every tile depending on the number it is at and if it merged or not
     private void render() {
         int[][] grid = engine.getGrid(); // gets grid logic from engine
         for (int r = 0; r < 4; r++) {
@@ -83,7 +84,7 @@ public class GameController {
             }
         }
     }
-    private String tileColor(int val) {
+    private String tileColor(int val) { // colors and stuff for each tile
         return switch (val) {
             case 3    -> "#dae8eeff";
             case 6    -> "#b6e3f5ff";
@@ -100,11 +101,7 @@ public class GameController {
     }
 
     @FXML
-    private void restart() {
-
-    }
-
-    public void themeChange(ActionEvent actionEvent) {
+    private void playAgain() {
 
     }
 

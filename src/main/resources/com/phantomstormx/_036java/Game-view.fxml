@@ -6,6 +6,8 @@
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
 
+
+
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="620.0" prefWidth="494.0" spacing="12.0" style="-fx-background-color: #1E1E1E;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.phantomstormx._036java.GameController">
     <padding>
         <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />
@@ -14,7 +16,7 @@
     <VBox alignment="CENTER" spacing="4.0">
         <Label prefHeight="60.0" prefWidth="318.0" style="-fx-font-size: 48px; -fx-font-weight: bold; -fx-background-color: #03045E; -fx-background-radius: 6; -fx-border-color: #FFFFFF; -fx-border-width: 2px; -fx-border-style: solid; -fx-border-radius: 6;" text="          3056">
             <textFill>
-                <LinearGradient endX="1.0" endY="0.7292161520190024">
+                <LinearGradient endY="0.7292161520190024">
                     <stops>
                         <Stop><color><Color /></color></Stop>
                         <Stop offset="0.007532956685499058"><color><Color red="1.0" green="1.0" blue="1.0" /></color></Stop>
@@ -65,22 +67,26 @@
         <StackPane fx:id="tile15" style="-fx-background-color: #CAF0F8; -fx-background-radius: 6;" GridPane.columnIndex="2" GridPane.rowIndex="3" />
         <StackPane fx:id="tile16" style="-fx-background-color: #CAF0F8; -fx-background-radius: 6;" GridPane.columnIndex="3" GridPane.rowIndex="3" />
     </GridPane>
+   <VBox>
+      <children>
 
-    <HBox alignment="CENTER" spacing="16.0">
+          <HBox alignment="CENTER" spacing="16.0">
 
-        <VBox alignment="CENTER" spacing="2.0" style="-fx-background-color: #03045E; -fx-background-radius: 6; -fx-padding: 8 20 8 20; -fx-border-style: solid; -fx-border-color: #FFFFFF; -fx-border-width: 2px; -fx-border-radius: 6;">
-            <Label style="-fx-font-size: 11px; -fx-font-weight: bold; -fx-text-fill: #f9f6f2;" text="SCORE" />
-            <Label fx:id="bestLabel" style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: white;" text="0" />
-        </VBox>
+              <VBox alignment="CENTER" spacing="2.0" style="-fx-background-color: #03045E; -fx-background-radius: 6; -fx-padding: 8 20 8 20; -fx-border-style: solid; -fx-border-color: #FFFFFF; -fx-border-width: 2px; -fx-border-radius: 6;">
+                  <Label style="-fx-font-size: 11px; -fx-font-weight: bold; -fx-text-fill: #f9f6f2;" text="SCORE" />
+                  <Label fx:id="bestLabel" style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: white;" text="0" />
+              </VBox>
 
-        <Button fx:id="playAgainButton" style="-fx-background-color: #0077B6; -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold; -fx-background-radius: 6; -fx-padding: 10 18 10 18; -fx-cursor: hand; -fx-border-color: #FFFFFF; -fx-border-style: solid; -fx-border-width: 2px; -fx-border-radius: 6;" text="Play Again" />
-      <VBox alignment="CENTER" layoutX="263.0" layoutY="10.0" spacing="2.0" style="-fx-background-color: #03045E; -fx-background-radius: 6; -fx-padding: 8 20 8 20; -fx-border-style: solid; -fx-border-color: #FFFFFF; -fx-border-width: 2px; -fx-border-radius: 6;">
-         <children>
-            <Label style="-fx-font-size: 11px; -fx-font-weight: bold; -fx-text-fill: #f9f6f2;" text="BEST" />
-            <Label fx:id="bestLabel1" style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: white;" text="0" />
-         </children>
-      </VBox>
+              <Button fx:id="playAgainButton" style="-fx-background-color: #0077B6; -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold; -fx-background-radius: 6; -fx-padding: 10 18 10 18; -fx-cursor: hand; -fx-border-color: #FFFFFF; -fx-border-style: solid; -fx-border-width: 2px; -fx-border-radius: 6;" text="Play Again" />
+            <VBox alignment="CENTER" layoutX="263.0" layoutY="10.0" spacing="2.0" style="-fx-background-color: #03045E; -fx-background-radius: 6; -fx-padding: 8 20 8 20; -fx-border-style: solid; -fx-border-color: #FFFFFF; -fx-border-width: 2px; -fx-border-radius: 6;">
+               <children>
+                  <Label style="-fx-font-size: 11px; -fx-font-weight: bold; -fx-text-fill: #f9f6f2;" text="BEST" />
+                  <Label fx:id="bestLabel1" style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: white;" text="0" />
+               </children>
+            </VBox>
 
-    </HBox>
+          </HBox>
+      </children>
+   </VBox>
 
 </VBox>

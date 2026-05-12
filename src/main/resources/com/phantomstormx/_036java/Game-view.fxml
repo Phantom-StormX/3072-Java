@@ -5,108 +5,83 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
-<?import javafx.scene.text.*?>
 
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="569.0" prefWidth="400.0" spacing="20.0" style="-fx-background-color: #f4ccccff;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.phantomstormx._036java.GameController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="620.0" prefWidth="494.0" spacing="12.0" style="-fx-background-color: #1E1E1E;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.phantomstormx._036java.GameController">
+
     <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+        <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />
     </padding>
-   <FlowPane prefHeight="200.0" prefWidth="200.0">
-      <children>
-         <Label prefHeight="52.0" prefWidth="365.0" style="-fx-font-size-75px;" text="WELCOME TO 3056!!!">
-            <font>
-               <Font name="Avenir Next Bold" size="33.0" />
-            </font>
-            <textFill>
-               <LinearGradient endX="1.0" endY="1.0">
-                  <stops>
-                     <Stop>
-                        <color>
-                           <Color red="1.0" />
-                        </color>
-                     </Stop>
-                     <Stop offset="1.0">
-                        <color>
-                           <Color red="0.07754629850387573" green="0.5465653538703918" blue="0.8815789222717285" />
-                        </color>
-                     </Stop>
-                  </stops>
-               </LinearGradient>
-            </textFill></Label>
-      </children>
-   </FlowPane>
-   <FlowPane prefHeight="61.0" prefWidth="360.0">
-      <children>
-         <Label prefHeight="34.0" prefWidth="241.0" text="Join the numbers together to get to 3056!!" />
-         <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="96.0" text="Play Again" />
-      </children>
-   </FlowPane>
-   <FlowPane prefHeight="36.0" prefWidth="360.0">
-      <children>
-         <TextFlow prefHeight="59.0" prefWidth="96.0">
-            <children>
-               <Label prefHeight="17.0" prefWidth="99.0" text="SCORE:" />
-               <TextArea prefHeight="41.0" prefWidth="81.0" />
-            </children>
-         </TextFlow>
-         <TextFlow prefHeight="59.0" prefWidth="89.0">
-            <children>
-               <Label prefHeight="17.0" prefWidth="104.0" text="BEST:" />
-               <TextArea prefHeight="42.0" prefWidth="87.0" />
-            </children></TextFlow>
-      </children>
-   </FlowPane>
-    <GridPane fx:id="tiles" alignment="BOTTOM_CENTER" gridLinesVisible="true" prefHeight="403.0" prefWidth="306.0" VBox.vgrow="NEVER">
-   <Label alignment="CENTER" prefHeight="70.0" prefWidth="360.0" style="-fx-background-color: #4b617aff; -fx-background-radius: 10px;" text="       3056       " textAlignment="CENTER" textFill="WHITE" underline="true">
-      <font>
-         <Font size="42.0" />
-      </font>
-   </Label>
-   <Button mnemonicParsing="false" text="Restart" />
-    <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0">
-        <children>
-            <SplitMenuButton mnemonicParsing="false" onAction="#themeChange" prefHeight="26.0" prefWidth="106.0" text="Theme">
-                <items>
-                    <MenuItem mnemonicParsing="false" text="Ocean" />
-                    <MenuItem mnemonicParsing="false" text="Space" />
-                    <MenuItem mnemonicParsing="false" text="Empty" />
-                </items>
-            </SplitMenuButton>
-            <Separator orientation="VERTICAL" prefHeight="200.0" visible="false" />
-            <TextField editable="false" prefHeight="26.0" prefWidth="123.0" text="Score:" />
-            <Separator orientation="VERTICAL" prefHeight="200.0" visible="false" />
-            <TextField prefHeight="26.0" prefWidth="132.0" style="-fx-background-color: #4b617aff;" />
-        </children>
-    </HBox>
 
-    <GridPane alignment="BOTTOM_CENTER" gridLinesVisible="true" prefHeight="403.0" prefWidth="306.0" VBox.vgrow="NEVER">
+    <VBox alignment="CENTER" spacing="4.0">
+        <Label prefHeight="60.0" prefWidth="318.0" style="-fx-font-size: 48px; -fx-font-weight: bold; -fx-background-color: #03045E; -fx-background-radius: 6; -fx-border-color: #FFFFFF; -fx-border-width: 2px; -fx-border-style: solid; -fx-border-radius: 6;" text="          3056">
+            <textFill>
+                <LinearGradient endX="1.0" endY="0.7292161520190024">
+                    <stops>
+                        <Stop><color><Color /></color></Stop>
+                        <Stop offset="0.007532956685499058"><color><Color red="1.0" green="1.0" blue="1.0" /></color></Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="1.0" green="1.0" blue="1.0" />
+                     </color>
+                  </Stop>
+                    </stops>
+                </LinearGradient>
+            </textFill>
+         <font>
+            <Font name="Droid Sans Bold" size="44.0" />
+         </font>
+        </Label>
+        <Label style="-fx-font-size: 14px; -fx-text-fill: #FFFFF;" text="Join the numbers together to reach 3056!" textFill="WHITE" />
+    </VBox>
+
+    <GridPane fx:id="gameGrid" alignment="CENTER" gridLinesVisible="true" hgap="8.0" style="-fx-border-style: solid; -fx-border-width: 5px; -fx-border-color: #00000; -fx-border-radius: 6;" vgap="8.0" VBox.vgrow="ALWAYS">
+
         <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="171.0" minWidth="10.0" prefWidth="164.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="171.0" minWidth="10.0" prefWidth="164.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="171.0" minWidth="10.0" prefWidth="164.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="171.0" minWidth="10.0" prefWidth="164.0" />
+            <ColumnConstraints hgrow="ALWAYS" percentWidth="25" />
+            <ColumnConstraints hgrow="ALWAYS" percentWidth="25" />
+            <ColumnConstraints hgrow="ALWAYS" percentWidth="25" />
+            <ColumnConstraints hgrow="ALWAYS" percentWidth="25" />
         </columnConstraints>
         <rowConstraints>
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints percentHeight="25" vgrow="ALWAYS" />
+            <RowConstraints percentHeight="25" vgrow="ALWAYS" />
+            <RowConstraints percentHeight="25" vgrow="ALWAYS" />
+            <RowConstraints percentHeight="25" vgrow="ALWAYS" />
         </rowConstraints>
-        <StackPane fx:id="tile1" layoutX="10.0" layoutY="10.0" prefHeight="150.0" prefWidth="200.0" />
-        <StackPane fx:id="tile2" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="1" />
-        <StackPane fx:id="tile3" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="2" />
-        <StackPane fx:id="tile4" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="3" />
-        <StackPane fx:id="tile5" prefHeight="150.0" prefWidth="200.0" GridPane.rowIndex="1" />
-        <StackPane fx:id="tile6" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-        <StackPane fx:id="tile7" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-        <StackPane fx:id="tile8" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-        <StackPane fx:id="tile9" prefHeight="150.0" prefWidth="200.0" GridPane.rowIndex="2" />
-        <StackPane fx:id="tile10" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-        <StackPane fx:id="tile11" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-        <StackPane fx:id="tile12" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-        <StackPane fx:id="tile13" prefHeight="150.0" prefWidth="200.0" GridPane.rowIndex="3" />
-        <StackPane fx:id="tile14" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-        <StackPane fx:id="tile15" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-        <StackPane fx:id="tile16" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+
+        <StackPane fx:id="tile1" style="-fx-background-color: #CAF0F8; -fx-background-radius: 6;" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+        <StackPane fx:id="tile2" style="-fx-background-color: #CAF0F8; -fx-background-radius: 6;" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+        <StackPane fx:id="tile3" style="-fx-background-color: #CAF0F8; -fx-background-radius: 6;" GridPane.columnIndex="2" GridPane.rowIndex="0" />
+        <StackPane fx:id="tile4" style="-fx-background-color: #CAF0F8; -fx-background-radius: 6;" GridPane.columnIndex="3" GridPane.rowIndex="0" />
+        <StackPane fx:id="tile5" style="-fx-background-color: #CAF0F8; -fx-background-radius: 6;" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+        <StackPane fx:id="tile6" style="-fx-background-color: #CAF0F8; -fx-background-radius: 6;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+        <StackPane fx:id="tile7" style="-fx-background-color: #CAF0F8; -fx-background-radius: 6;" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+        <StackPane fx:id="tile8" style="-fx-background-color: #CAF0F8; -fx-background-radius: 6;" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+        <StackPane fx:id="tile9" style="-fx-background-color: #CAF0F8; -fx-background-radius: 6;" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+        <StackPane fx:id="tile10" style="-fx-background-color: #CAF0F8; -fx-background-radius: 6;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+        <StackPane fx:id="tile11" style="-fx-background-color: #CAF0F8; -fx-background-radius: 6;" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+        <StackPane fx:id="tile12" style="-fx-background-color: #CAF0F8; -fx-background-radius: 6;" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+        <StackPane fx:id="tile13" style="-fx-background-color: #CAF0F8; -fx-background-radius: 6;" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+        <StackPane fx:id="tile14" style="-fx-background-color: #CAF0F8; -fx-background-radius: 6;" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+        <StackPane fx:id="tile15" style="-fx-background-color: #CAF0F8; -fx-background-radius: 6;" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+        <StackPane fx:id="tile16" style="-fx-background-color: #CAF0F8; -fx-background-radius: 6;" GridPane.columnIndex="3" GridPane.rowIndex="3" />
     </GridPane>
+
+    <HBox alignment="CENTER" spacing="16.0">
+
+        <VBox alignment="CENTER" spacing="2.0" style="-fx-background-color: #03045E; -fx-background-radius: 6; -fx-padding: 8 20 8 20; -fx-border-style: solid; -fx-border-color: #FFFFFF; -fx-border-width: 2px; -fx-border-radius: 6;">
+            <Label style="-fx-font-size: 11px; -fx-font-weight: bold; -fx-text-fill: #f9f6f2;" text="SCORE" />
+            <Label fx:id="bestLabel" style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: white;" text="0" />
+        </VBox>
+
+        <Button fx:id="playAgainButton" style="-fx-background-color: #0077B6; -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold; -fx-background-radius: 6; -fx-padding: 10 18 10 18; -fx-cursor: hand; -fx-border-color: #FFFFFF; -fx-border-style: solid; -fx-border-width: 2px; -fx-border-radius: 6;" text="Play Again" />
+      <VBox alignment="CENTER" layoutX="263.0" layoutY="10.0" spacing="2.0" style="-fx-background-color: #03045E; -fx-background-radius: 6; -fx-padding: 8 20 8 20; -fx-border-style: solid; -fx-border-color: #FFFFFF; -fx-border-width: 2px; -fx-border-radius: 6;">
+         <children>
+            <Label style="-fx-font-size: 11px; -fx-font-weight: bold; -fx-text-fill: #f9f6f2;" text="BEST" />
+            <Label fx:id="bestLabel1" style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: white;" text="0" />
+         </children>
+      </VBox>
+
+    </HBox>
+
 </VBox>

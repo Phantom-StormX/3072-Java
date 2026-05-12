@@ -6,6 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import javax.swing.*;
 import java.io.IOException;
 
 public class Main extends Application {
@@ -19,9 +20,6 @@ public class Main extends Application {
         scene.setOnKeyPressed(controller::handleKeyPress);   // arrow key functions
         stage.setScene(scene);
         stage.show();
-
-
-
 
     }
 

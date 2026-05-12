@@ -56,7 +56,6 @@
             </children></TextFlow>
       </children>
    </FlowPane>
-    <GridPane fx:id="tiles" alignment="BOTTOM_CENTER" gridLinesVisible="true" prefHeight="403.0" prefWidth="306.0" VBox.vgrow="NEVER">
    <Label alignment="CENTER" prefHeight="70.0" prefWidth="360.0" style="-fx-background-color: #4b617aff; -fx-background-radius: 10px;" text="       3056       " textAlignment="CENTER" textFill="WHITE" underline="true">
       <font>
          <Font size="42.0" />

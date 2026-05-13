@@ -43,18 +43,26 @@ If you are running from a compiled output folder, make sure the application is l
 The project is split into multiple classes to keep responsibilities organized.
 
 ### Main
+- hooks up everything from the controller and fxml
+- sends that information to the launcher
 
 
 ### Launcher
+- Launches all of the classes, actually runs the game
 
 
 ### GameController
+- all of the arrow key work, and animation and tile color is here
+- engine is hooked up to this
 
 
 ### GameEngine
+- all of the tile spawn, slide and merge, and arrow key functions are here
+- where controller gets its information
 
 
 ### Game-View
+- fxml that has the actual GUI for the game
 
 
 ## User Interface

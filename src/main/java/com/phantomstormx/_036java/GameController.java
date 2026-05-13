@@ -1,12 +1,12 @@
 package com.phantomstormx._036java;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import javafx.scene.control.SplitMenuButton;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.StackPane;
+import javafx.animation.ScaleTransition;
+import javafx.util.Duration;
 
 public class GameController {
 
@@ -60,8 +60,14 @@ public class GameController {
             default    -> false;
         };
         if (moved) { // SPAWNS THE TILES YAYAYAAYYY
+            e.consume();
             engine.spawnTile();
             render(); // updates display
+            int r = engine.getLastRow(); //yoinks the last row and column tracker from engine
+            int c = engine.getLastCol();
+            if( r >= 0 && c >= 0 ) { // safety check to ensure that the rows and columns indices(index) are non-negative(aka clear)
+                ANIMATION(tiles[r][c]);
+            }
         }
     }
 
@@ -103,6 +109,21 @@ public class GameController {
     @FXML
     private void playAgain() {
 
+    }
+
+    private void ANIMATION(StackPane tile) {
+        // sets the initial tile coord size to 0
+        tile.setScaleX(0);
+        tile.setScaleY(0);
+        //changes the amount of time it takes for the transition to happen
+        ScaleTransition scaleTransition = new ScaleTransition(Duration.millis(150), tile);
+        // original tile coord size(empty)
+        scaleTransition.setFromX(0);
+        scaleTransition.setFromY(0);
+        // final tile coord size
+        scaleTransition.setToX(1.0);
+        scaleTransition.setToY(1.0);
+        scaleTransition.play();
     }
 
 }

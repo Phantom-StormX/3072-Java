@@ -14,6 +14,13 @@ public class GameEngine {
     int[][] grid = new int[4][4]; // creates a grid with 4 rows and 4 columns
     Random rand = new Random(); // self explainable
 
+    private int lastRow = -1, lastCol = -1;
+
+    public int getLastRow(){
+        return lastRow; }
+    public int getLastCol(){
+        return lastCol; }
+
     //spawns in 2 tiles @the beginning of the game
     public GameEngine() {
         spawnTile();
@@ -23,6 +30,7 @@ public class GameEngine {
     public void spawnTile() {
 
         List<int[]> emptyCells = new ArrayList<>(); // makes an arraylist for the empty grid tiles, an ArrayList that holds other ArrayLists B)
+
 
         // Find all empty grid tiles in the grid
         for (int r = 0; r < 4; r++) {
@@ -34,6 +42,9 @@ public class GameEngine {
         if (!emptyCells.isEmpty()) { // makes sure parts of the grid is empty
             int[] spot = emptyCells.get(rand.nextInt(emptyCells.size())); // selects a random coordinate in the grid to place tile
             grid[spot[0]][spot[1]] = (rand.nextDouble() < 0.9) ? 3 : 6; // places the tile of either 3(90% chance of generating) or 6(10% chance of generating)
+            // tracks where tiles spawn
+            lastRow = spot[0];
+            lastCol = spot[1];
         }
     }
 

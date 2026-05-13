@@ -36,8 +36,9 @@ public class GameController {
         This ensures that the key listener is added only after tile1 spawns which handles keyboard events in JavaFX,
         stops the event from reaching any further nodes or handlers
          */
+
         tile1.sceneProperty().addListener((obs, oldScene, newScene) -> {
-            if (newScene != null) {
+            if (newScene != null) { // :: acts as a listener
                 newScene.addEventFilter(KeyEvent.KEY_PRESSED, this::handleKeyPress); // intercepts events during the early "capture" phase of the event dispatch chain
             }
         });
@@ -63,10 +64,16 @@ public class GameController {
             e.consume();
             engine.spawnTile();
             render(); // updates display
+
+            for (int[] cell : engine.getLastMerges()){
+                TileMergeAnm(tiles[cell[0]][cell[1]]);
+            }
+
             int r = engine.getLastRow(); //yoinks the last row and column tracker from engine
             int c = engine.getLastCol();
+
             if( r >= 0 && c >= 0 ) { // safety check to ensure that the rows and columns indices(index) are non-negative(aka clear)
-                ANIMATION(tiles[r][c]);
+                SpawnTileAnm(tiles[r][c]);
             }
         }
     }
@@ -111,19 +118,32 @@ public class GameController {
 
     }
 
-    private void ANIMATION(StackPane tile) {
+    private void SpawnTileAnm(StackPane tile) {
         // sets the initial tile coord size to 0
         tile.setScaleX(0);
         tile.setScaleY(0);
         //changes the amount of time it takes for the transition to happen
-        ScaleTransition scaleTransition = new ScaleTransition(Duration.millis(150), tile);
+        ScaleTransition inwardPop = new ScaleTransition(Duration.millis(200), tile);
         // original tile coord size(empty)
-        scaleTransition.setFromX(0);
-        scaleTransition.setFromY(0);
+        inwardPop.setFromX(0);
+        inwardPop.setFromY(0);
         // final tile coord size
-        scaleTransition.setToX(1.0);
-        scaleTransition.setToY(1.0);
-        scaleTransition.play();
+        inwardPop.setToX(1.0);
+        inwardPop.setToY(1.0);
+        inwardPop.play();
+
+    }
+
+    private void TileMergeAnm(StackPane tile) {
+        ScaleTransition pop = new ScaleTransition(Duration.millis(200), tile);
+        pop.setFromX(1.0);
+        pop.setFromY(1.0);
+        pop.setToX(1.2); // makes newly merged tile larger
+        pop.setToY(1.2);
+        pop.setAutoReverse(true); // Returns newly merged tile to original size
+        pop.setCycleCount(2);
+        pop.play();
+
     }
 
 }

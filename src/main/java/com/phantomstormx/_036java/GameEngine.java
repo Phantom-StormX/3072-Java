@@ -16,10 +16,19 @@ public class GameEngine {
 
     private int lastRow = -1, lastCol = -1;
 
-    public int getLastRow(){
-        return lastRow; }
-    public int getLastCol(){
-        return lastCol; }
+    public int getLastRow() {
+        return lastRow;
+    }
+
+    public int getLastCol() {
+        return lastCol;
+    }
+
+    private final List<int[]> mergedCells = new ArrayList<>();
+
+    public List<int[]> getLastMerges() {
+        return mergedCells;
+    }
 
     //spawns in 2 tiles @the beginning of the game
     public GameEngine() {
@@ -35,9 +44,17 @@ public class GameEngine {
         // Find all empty grid tiles in the grid
         for (int r = 0; r < 4; r++) {
             for (int c = 0; c < 4; c++) {
-                if (grid[r][c] == 0) emptyCells.add(new int[]{r, c}); // if the tile is empty, it will generate one tile
+                if (grid[r][c] == 0) emptyCells.add(new int[]{r, c}); // returns a new array of numbers(ex:[1,10])
+                // if the grid is empty, it will generate one tile
             }
         }
+
+        /*
+        (?) Takes two different things after a certain assignment,
+         and lets it choose between a certain
+        amount of objects, such as 3 and 6 in this case.
+        it's like an if else statement
+         */
 
         if (!emptyCells.isEmpty()) { // makes sure parts of the grid is empty
             int[] spot = emptyCells.get(rand.nextInt(emptyCells.size())); // selects a random coordinate in the grid to place tile
@@ -48,32 +65,49 @@ public class GameEngine {
         }
     }
 
-    private int[] slideAndMerge(int[] row) {
+    private int[] slideAndMerge(int[] row, List<Integer> mergedAt) {
         int[] packed = new int[4];  // moves all non-zero numbers to the left, keeps it nice and organized
+        boolean[] completedMerge = new boolean[4];
         int idx = 0; // makes an index for the row
         for (int v : row) if (v != 0) packed[idx++] = v;
         for (int i = 0; i < 3; i++) {
             if (packed[i] != 0 && packed[i] == packed[i + 1]) { // checks if a tile is empty or not then matches the tile next to it
                 packed[i] *= 2; // doubles the value when merged
                 packed[i + 1] = 0;
+                completedMerge[i] = true;
                 i++; // skips to the next index so that it does not accidentally double merge
             }
         }
         //filters out 0 and returns and array up to four characters
         int[] result = new int[4];
-        idx = 0;
-        for (int v : packed) if (v != 0) result[idx++] = v;
+        idx = 0; // index for loop
+        for (int i = 0; i < 4; i++) { // starts at 0, and goes through the packed information then goes through a loop from least number to greatest number
+            if (packed[i] != 0) {
+                result[idx] = packed[i];
+                if (completedMerge[i]) {
+                    mergedAt.add(idx); // carry merge flag into result position
+                }
+                idx++;
+            }
+        }
         return result;
     }
 
     //Controls the movements for the left arrow
     public boolean moveLeft() {
         boolean moved = false;
+        mergedCells.clear();
         for (int r = 0; r < 4; r++) {
-            int[] merged = slideAndMerge(grid[r]);
+            List<Integer> mergedAt = new ArrayList<>();
+            int[] merged = slideAndMerge(grid[r], mergedAt); // takes the array representing the row, returns a new array of the same size, and ensures values are combined once per move
+
+
             //identifies whether a movement or merge happened or not
             if (!Arrays.equals(grid[r], merged)) moved = true;
             grid[r] = merged;
+            for (int c : mergedAt) {
+                mergedCells.add(new int[]{r, c});
+            }
         }
         return moved;
     }
@@ -81,11 +115,16 @@ public class GameEngine {
     //Controls the movements for the right arrow key
     public boolean moveRight() {
         boolean moved = false;
+        mergedCells.clear();
         for (int r = 0; r < 4; r++) {
-            int[] merged = reverse(slideAndMerge(reverse(grid[r])));
+            List<Integer> mergedAt = new ArrayList<>();
+            int[] merged = reverse(slideAndMerge(reverse(grid[r]), mergedAt));
             //identifies whether a movement or merge happened or not
             if (!Arrays.equals(grid[r], merged)) moved = true;
             grid[r] = merged;
+            for (int c : mergedAt) {
+                mergedCells.add(new int[]{r, 3 - c}); // un-reverse column index
+            }
         }
         return moved;
     }
@@ -93,12 +132,17 @@ public class GameEngine {
     //Controls the movements for the up arrow key
     public boolean moveUp() {
         boolean moved = false;
+        mergedCells.clear();
         for (int c = 0; c < 4; c++) {
+            List<Integer> mergedAt = new ArrayList<>();
             int[] col = getCol(c);
-            int[] merged = slideAndMerge(col);
+            int[] merged = slideAndMerge(col, mergedAt);
             //identifies whether a movement or merge happened or not
             if (!Arrays.equals(col, merged)) moved = true;
             setCol(c, merged);
+            for (int r : mergedAt) {
+                mergedCells.add(new int[]{r, c});
+            }
         }
         return moved;
     }
@@ -106,12 +150,17 @@ public class GameEngine {
     //Controls the movements for the up arrow key
     public boolean moveDown() {
         boolean moved = false;
+        mergedCells.clear();
         for (int c = 0; c < 4; c++) {
+            List<Integer> mergedAt = new ArrayList<>();
             int[] col = getCol(c);
-            int[] merged = reverse(slideAndMerge(reverse(col)));
+            int[] merged = reverse(slideAndMerge(reverse(col), mergedAt));
             //identifies whether a movement or merge happened or not
             if (!Arrays.equals(col, merged)) moved = true;
             setCol(c, merged);
+            for (int r : mergedAt) {
+                mergedCells.add(new int[]{3 - r, c}); // un-reverse row index
+            }
         }
         return moved;
     }
@@ -135,7 +184,8 @@ public class GameEngine {
         for (int r = 0; r < 4; r++) grid[r][c] = col[r];
     }
 
-    public int[][] getGrid(){
-        return grid; }
+    public int[][] getGrid() {
+        return grid;
+    }
 
 }

@@ -1,4 +1,4 @@
-package com.phantomstormx._036java;
+package com.phantomstormx._072java;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -6,7 +6,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-import javax.swing.*;
 import java.io.IOException;
 
 public class Main extends Application {

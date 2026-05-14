@@ -6,13 +6,13 @@
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="620.0" prefWidth="494.0" spacing="12.0" style="-fx-background-color: #1E1E1E;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.phantomstormx._036java.GameController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="620.0" prefWidth="494.0" spacing="12.0" style="-fx-background-color: #1E1E1E;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.phantomstormx._072java.GameController">
     <padding>
         <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />
     </padding>
 
     <VBox alignment="CENTER" spacing="4.0">
-        <Label prefHeight="60.0" prefWidth="318.0" style="-fx-font-size: 48px; -fx-font-weight: bold; -fx-background-color: #03045E; -fx-background-radius: 6; -fx-border-color: #FFFFFF; -fx-border-width: 2px; -fx-border-style: solid; -fx-border-radius: 6;" text="          3056">
+        <Label prefHeight="60.0" prefWidth="318.0" style="-fx-font-size: 48px; -fx-font-weight: bold; -fx-background-color: #03045E; -fx-background-radius: 6; -fx-border-color: #FFFFFF; -fx-border-width: 2px; -fx-border-style: solid; -fx-border-radius: 6;" text="          3072">
             <textFill>
                 <LinearGradient endY="0.7292161520190024">
                     <stops>
@@ -30,7 +30,7 @@
             <Font name="Droid Sans Bold" size="44.0" />
          </font>
         </Label>
-        <Label style="-fx-font-size: 14px; -fx-text-fill: #FFFFF;" text="Join the numbers together to reach 3056!" textFill="WHITE" />
+        <Label style="-fx-font-size: 14px; -fx-text-fill: #FFFFF;" text="Join the numbers together to reach 3072!" textFill="WHITE" />
     </VBox>
 
     <GridPane alignment="CENTER" hgap="8.0" style="-fx-border-style: solid; -fx-border-width: 5px; -fx-border-color: #00000; -fx-border-radius: 6;" vgap="8.0" VBox.vgrow="ALWAYS">

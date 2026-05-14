@@ -6,14 +6,13 @@
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
 
-
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="620.0" prefWidth="494.0" spacing="12.0" style="-fx-background-color: #1E1E1E;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.phantomstormx._036java.GameController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="620.0" prefWidth="494.0" spacing="12.0" style="-fx-background-color: #1E1E1E;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.phantomstormx._072java.GameController">
     <padding>
         <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />
     </padding>
 
     <VBox alignment="CENTER" spacing="4.0">
-        <Label prefHeight="60.0" prefWidth="318.0" style="-fx-font-size: 48px; -fx-font-weight: bold; -fx-background-color: #03045E; -fx-background-radius: 6; -fx-border-color: #FFFFFF; -fx-border-width: 2px; -fx-border-style: solid; -fx-border-radius: 6;" text="          3056">
+        <Label prefHeight="60.0" prefWidth="318.0" style="-fx-font-size: 48px; -fx-font-weight: bold; -fx-background-color: #03045E; -fx-background-radius: 6; -fx-border-color: #FFFFFF; -fx-border-width: 2px; -fx-border-style: solid; -fx-border-radius: 6;" text="          3072">
             <textFill>
                 <LinearGradient endY="0.7292161520190024">
                     <stops>
@@ -31,10 +30,10 @@
             <Font name="Droid Sans Bold" size="44.0" />
          </font>
         </Label>
-        <Label style="-fx-font-size: 14px; -fx-text-fill: #FFFFF;" text="Join the numbers together to reach 3056!" textFill="WHITE" />
+        <Label style="-fx-font-size: 14px; -fx-text-fill: #FFFFF;" text="Join the numbers together to reach 3072!" textFill="WHITE" />
     </VBox>
 
-    <GridPane alignment="CENTER" gridLinesVisible="true" hgap="8.0" style="-fx-border-style: solid; -fx-border-width: 5px; -fx-border-color: #00000; -fx-border-radius: 6;" vgap="8.0" VBox.vgrow="ALWAYS">
+    <GridPane alignment="CENTER" hgap="8.0" style="-fx-border-style: solid; -fx-border-width: 5px; -fx-border-color: #00000; -fx-border-radius: 6;" vgap="8.0" VBox.vgrow="ALWAYS">
 
         <columnConstraints>
             <ColumnConstraints hgrow="ALWAYS" percentWidth="25" />
@@ -69,21 +68,15 @@
     <VBox>
         <HBox alignment="CENTER" spacing="16.0">
 
-            <VBox alignment="CENTER" spacing="2.0"
-                  style="-fx-background-color: #03045E; -fx-background-radius: 6; -fx-padding: 8 20 8 20; -fx-border-style: solid; -fx-border-color: #FFFFFF; -fx-border-width: 2px; -fx-border-radius: 6;">
-                <Label style="-fx-font-size: 11px; -fx-font-weight: bold; -fx-text-fill: #f9f6f2;" text="SCORE"/>
-                <Label style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: white;"
-                       text="0"/>
+            <VBox alignment="CENTER" spacing="2.0" style="-fx-background-color: #03045E; -fx-background-radius: 6; -fx-padding: 8 20 8 20; -fx-border-style: solid; -fx-border-color: #FFFFFF; -fx-border-width: 2px; -fx-border-radius: 6;">
+                <Label style="-fx-font-size: 11px; -fx-font-weight: bold; -fx-text-fill: #f9f6f2;" text="SCORE" />
+                <Label style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: white;" text="0" />
             </VBox>
 
-            <Button fx:id="playAgain"
-                    style="-fx-background-color: #0077B6; -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold; -fx-background-radius: 6; -fx-padding: 10 18 10 18; -fx-cursor: hand; -fx-border-color: #FFFFFF; -fx-border-style: solid; -fx-border-width: 2px; -fx-border-radius: 6;"
-                    text="Play Again"/>
-            <VBox alignment="CENTER" layoutX="263.0" layoutY="10.0" spacing="2.0"
-                  style="-fx-background-color: #03045E; -fx-background-radius: 6; -fx-padding: 8 20 8 20; -fx-border-style: solid; -fx-border-color: #FFFFFF; -fx-border-width: 2px; -fx-border-radius: 6;">
-                <Label style="-fx-font-size: 11px; -fx-font-weight: bold; -fx-text-fill: #f9f6f2;" text="BEST"/>
-                <Label style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: white;"
-                       text="0"/>
+            <Button fx:id="playAgain" onAction="#playAgain" style="-fx-background-color: #0077B6; -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold; -fx-background-radius: 6; -fx-padding: 10 18 10 18; -fx-cursor: hand; -fx-border-color: #FFFFFF; -fx-border-style: solid; -fx-border-width: 2px; -fx-border-radius: 6;" text="Play Again" />
+            <VBox alignment="CENTER" layoutX="263.0" layoutY="10.0" spacing="2.0" style="-fx-background-color: #03045E; -fx-background-radius: 6; -fx-padding: 8 20 8 20; -fx-border-style: solid; -fx-border-color: #FFFFFF; -fx-border-width: 2px; -fx-border-radius: 6;">
+                <Label style="-fx-font-size: 11px; -fx-font-weight: bold; -fx-text-fill: #f9f6f2;" text="BEST" />
+                <Label style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: white;" text="0" />
             </VBox>
 
         </HBox>

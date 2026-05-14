@@ -70,6 +70,13 @@ The project is split into multiple classes to keep responsibilities organized.
 The GUI is built using JavaFX and uses layout management rather than absolute positioning.  
 This helps keep the interface organized and easier to resize or maintain.
 
+## Challenges/Bugs
+- Animation
+  - we tried to use CSS for it but then ran into a problem because CSS animations such as cannot function well with FXML in animation and transition.
+    - CSS is more used for colors and images, we did the colors in the FXML scene builder.
+  - had to research some about how to do it manually, and figured it out.
+  - we got the the spawn animations to work fine but when we did the merge it began to bug out by randomly animating an empty part of the grid.
+
 ## Credentials 
 - https://hoangsonww.github.io/Game-2048-JavaFX/
 - https://projectgurukul.org/java-2048-game/

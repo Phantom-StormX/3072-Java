@@ -1,5 +1,6 @@
 package com.phantomstormx._036java;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -10,6 +11,7 @@ import java.util.Random;
     */
 
 public class GameEngine {
+private int score;
 
     int[][] grid = new int[4][4]; // creates a grid with 4 rows and 4 columns
     Random rand = new Random(); // self explainable
@@ -55,6 +57,8 @@ public class GameEngine {
         for (int i = 0; i < 3; i++) {
             if (packed[i] != 0 && packed[i] == packed[i + 1]) { // checks if a tile is empty or not then matches the tile next to it
                 packed[i] *= 2; // doubles the value when merged
+                // This where you would add the 1 line of code to update score
+                score += packed[i];
                 packed[i + 1] = 0;
                 i++; // skips to the next index so that it does not accidentally double merge
             }

@@ -16,7 +16,7 @@ public class GameController {
     @FXML private StackPane tile9,  tile10, tile11, tile12;
     @FXML private StackPane tile13, tile14, tile15, tile16;
     @FXML private Button playAgain;
-    @FXML private TextField score;
+    @FXML private Label scoreLabel;
     private GameEngine engine;
     @FXML
     private StackPane[][] tiles;

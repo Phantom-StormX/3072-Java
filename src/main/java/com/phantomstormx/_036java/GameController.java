@@ -122,7 +122,26 @@ public class GameController {
 
     @FXML
     private void playAgain() {
+        engine = new GameEngine(); // starts the engine (spawns 2 tiles)
 
+        tiles = new StackPane[][]{ // maps the 16 child StackPane(aka tiles) into a 2D array
+                {tile1, tile2, tile3, tile4},
+                {tile5, tile6, tile7, tile8},
+                {tile9, tile10, tile11, tile12},
+                {tile13, tile14, tile15, tile16}
+        };
+
+    /*
+    This ensures that the key listener is added only after tile1 spawns which handles keyboard events in JavaFX,
+    stops the event from reaching any further nodes or handlers
+     */
+        tile1.sceneProperty().addListener((obs, oldScene, newScene) -> {
+            if (newScene != null) {
+                newScene.addEventFilter(KeyEvent.KEY_PRESSED, this::handleKeyPress); // intercepts events during the early "capture" phase of the event dispatch chain
+            }
+        });
+        render();
+        engine.spawnTile();
     }
 
     private void SpawnTileAnm(StackPane tile) {

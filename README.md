@@ -1,6 +1,6 @@
-<h1 align="center">Welcome to 3056! 👋</h1>
+<h1 align="center">Welcome to 3072! 👋</h1>
 
-A Java GUI 3056 game built with javaFX, focused on clear structure, and an easy-to-use interface.
+A Java GUI 3072 game built with javaFX, focused on clear structure, and an easy-to-use interface.
 
 ## How to play
 - use your arrow keys(or WASD) to move blocks up, down, left and right

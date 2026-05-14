@@ -14,7 +14,7 @@ public class GameEngine {
     int[][] grid = new int[4][4]; // creates a grid with 4 rows and 4 columns
     Random rand = new Random(); // self explainable
 
-    private int lastRow = -1, lastCol = -1;
+    private int lastRow = -1, lastCol = -1; // last row or column filled/unfilled
 
     public int getLastRow() {
         return lastRow;
@@ -24,13 +24,13 @@ public class GameEngine {
         return lastCol;
     }
 
-    private final List<int[]> mergedCells = new ArrayList<>();
+    private final List<int[]> mergedCells = new ArrayList<>(); // tracks which tiles have been merged or not by creating an arraylist
 
     public List<int[]> getLastMerges() {
         return mergedCells;
     }
 
-    //spawns in 2 tiles @the beginning of the game
+    //spawns in 2 tiles @ the beginning of the game
     public GameEngine() {
         spawnTile();
         spawnTile();
@@ -45,7 +45,7 @@ public class GameEngine {
         for (int r = 0; r < 4; r++) {
             for (int c = 0; c < 4; c++) {
                 if (grid[r][c] == 0) emptyCells.add(new int[]{r, c}); // returns a new array of numbers(ex:[1,10])
-                // if the grid is empty, it will generate one tile
+                // if the grid(rows or columns) is empty, it will generate one tile per cell
             }
         }
 
@@ -56,10 +56,10 @@ public class GameEngine {
         it's like an if else statement
          */
 
-        if (!emptyCells.isEmpty()) { // makes sure parts of the grid is empty
-            int[] spot = emptyCells.get(rand.nextInt(emptyCells.size())); // selects a random coordinate in the grid to place tile
+        if (!emptyCells.isEmpty()) { // makes sure parts of the grid are empty
+            int[] spot = emptyCells.get(rand.nextInt(emptyCells.size())); // selects a random empty coordinate from the list(array) of empty cells
             grid[spot[0]][spot[1]] = (rand.nextDouble() < 0.9) ? 3 : 6; // places the tile of either 3(90% chance of generating) or 6(10% chance of generating)
-            // tracks where tiles spawn
+            // allows the game to highlight or animate the newly placed tile
             lastRow = spot[0];
             lastCol = spot[1];
         }
@@ -82,30 +82,29 @@ public class GameEngine {
         int[] result = new int[4];
         idx = 0; // index for loop
         for (int i = 0; i < 4; i++) { // starts at 0, and goes through the packed information then goes through a loop from least number to greatest number
-            if (packed[i] != 0) {
-                result[idx] = packed[i];
+            if (packed[i] != 0) { // skips empty spaces (0 is an empty space)
+                result[idx] = packed[i]; // moves the number to result[idx] and increments idx to make an organized array (EX: [2, 0, 0, 2] becomes [2, 2, 0, 0])
                 if (completedMerge[i]) {
-                    mergedAt.add(idx); // carry merge flag into result position
+                    mergedAt.add(idx); // if the merge happens(or if it is true), then it'll record the position of the merge
                 }
-                idx++;
+                idx++; // adds it to the index
             }
         }
         return result;
     }
 
-    //Controls the movements for the left arrow
+    // Controls the movements for the left arrow key
     public boolean moveLeft() {
         boolean moved = false;
-        mergedCells.clear();
+        mergedCells.clear(); // clears the list of merged tiles
         for (int r = 0; r < 4; r++) {
-            List<Integer> mergedAt = new ArrayList<>();
+            List<Integer> mergedAt = new ArrayList<>(); // makes a list for newly merged tiles
             int[] merged = slideAndMerge(grid[r], mergedAt); // takes the array representing the row, returns a new array of the same size, and ensures values are combined once per move
-
-
             //identifies whether a movement or merge happened or not
-            if (!Arrays.equals(grid[r], merged)) moved = true;
+            if (!Arrays.equals(grid[r], merged)) // if the arrow key is pressed or if a tile merged, then moved will come out as true
+                moved = true;
             grid[r] = merged;
-            for (int c : mergedAt) {
+            for (int c : mergedAt) { // adds information to the list(array)
                 mergedCells.add(new int[]{r, c});
             }
         }
@@ -165,7 +164,7 @@ public class GameEngine {
         return moved;
     }
 
-    //creates and returns a new array in which is reversed from og input
+    //creates and returns a new array in which is reversed from og input (EX: [2,2,0,0] to [0,0,2,2])
     private int[] reverse(int[] a) {
         int[] r = new int[a.length];
         for (int i = 0; i < a.length; i++) r[i] = a[a.length - 1 - i];
@@ -175,13 +174,15 @@ public class GameEngine {
     //Extracts a specific column from a 2D array and returns as a 1D array
     private int[] getCol(int c) { // creates a 4-element array, loops rows, & copies values
         int[] col = new int[4];
-        for (int r = 0; r < 4; r++) col[r] = grid[r][c];
+        for (int r = 0; r < 4; r++)
+            col[r] = grid[r][c];
         return col;
     }
 
     //updates a specific column in a 2D array with values in provided array
     private void setCol(int c, int[] col) {
-        for (int r = 0; r < 4; r++) grid[r][c] = col[r];
+        for (int r = 0; r < 4; r++)
+            grid[r][c] = col[r];
     }
 
     public int[][] getGrid() {

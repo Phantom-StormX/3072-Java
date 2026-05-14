@@ -22,7 +22,6 @@ public class GameController {
     private StackPane tile13, tile14, tile15, tile16;
     //@FXML private Button playAgain;
     private GameEngine engine;
-    private GameController controller;
     @FXML
     private StackPane[][] tiles;
 
@@ -38,9 +37,17 @@ public class GameController {
         };
 
         /*
+
         This ensures that the key listener is added only after tile1 spawns which handles keyboard events in JavaFX,
         stops the event from reaching any further nodes or handlers
+
+        (::) acts as a listener, provides a concise way to refer to
+        a method or constructor without executing it. Primarily used as shorthand for lambda expressions.
+        For example, instead of writing s -> System.out.println(s), you can simply write System.out::println
+                                            |||||||||||||||
+                                            ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
          */
+
         tile1.sceneProperty().addListener((obs, oldScene, newScene) -> {
             if (newScene != null) {
                 newScene.addEventFilter(KeyEvent.KEY_PRESSED, this::handleKeyPress); // intercepts events during the early "capture" phase of the event dispatch chain

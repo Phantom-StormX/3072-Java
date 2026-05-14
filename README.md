@@ -76,6 +76,13 @@ This helps keep the interface organized and easier to resize or maintain.
     - CSS is more used for colors and images, we did the colors in the FXML scene builder.
   - had to research some about how to do it manually, and figured it out.
   - we got the the spawn animations to work fine but when we did the merge it began to bug out by randomly animating an empty part of the grid.
+- Score and high score
+  - It was difficult to find out where to put the score code, since we did it last.
+- Play again
+  - Also hard to implement it into the code because we did it last, and when we had to push this code it disappeared, so we had to fix/redo that.
+- Math
+  - We had to figure out what the 3 factors were, and we thought that it ended with 3036 at first(it wasn't), then 3056(it wasn't), and we finally played the game to find out that it was 3072.     
+
 
 ## Credentials 
 - https://hoangsonww.github.io/Game-2048-JavaFX/

@@ -1,6 +1,6 @@
 <h1 align="center">Welcome to 3072! 👋</h1>
 
-A Java GUI 3072 game built with javaFX, focused on clear structure, and an easy-to-use interface.
+<p align="center">A Java GUI 3072 game built with javaFX, focused on clear structure, and an easy-to-use interface.
 
 ## How to play
 - use your arrow keys(or WASD) to move blocks up, down, left and right
@@ -89,5 +89,5 @@ This helps keep the interface organized and easier to resize or maintain.
 - https://projectgurukul.org/java-2048-game/
 - https://www.instructables.com/Program-Your-Own-2048-Game-WJava/
 - Used replit AI for a lot of debugging in the engine and partially in the controller parts of this game
-- @DaNoob8157 for README layout, thanks :)
-- @ElliottAndCoachGeorge for GUI help, thank you!
+- [@DaNoob8157](https://github.com/DaNoob1857) for README layout, thanks :)
+- [@ElliottAndCoachGeorge](https://github.com/ElliottAndCoachGeorge) for GUI help, thank you!

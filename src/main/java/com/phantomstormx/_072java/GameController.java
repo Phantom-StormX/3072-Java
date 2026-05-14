@@ -1,7 +1,5 @@
 package com.phantomstormx._072java;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.StackPane;
@@ -15,8 +13,10 @@ public class GameController {
     @FXML private StackPane tile5,  tile6,  tile7,  tile8;
     @FXML private StackPane tile9,  tile10, tile11, tile12;
     @FXML private StackPane tile13, tile14, tile15, tile16;
-    @FXML private Button playAgain;
+
     @FXML private Label scoreLabel;
+    @FXML private Label bestLabel;
+    private int bestScore = 0;
     private GameEngine engine;
     @FXML
     private StackPane[][] tiles;
@@ -71,6 +71,7 @@ public class GameController {
             e.consume();
             engine.spawnTile();
             render(); // updates display
+            updateScore();
 
             for (int[] cell : engine.getLastMerges()){
                 TileMergeAnm(tiles[cell[0]][cell[1]]);
@@ -104,6 +105,17 @@ public class GameController {
             }
         }
     }
+
+    private void updateScore() {
+        int current = engine.getScore();
+        scoreLabel.setText(String.valueOf(current));
+        if(current > bestScore) {
+            bestScore = current;
+            bestLabel.setText(String.valueOf(bestScore));
+        }
+    }
+
+
     private String tileColor(int val) { // colors and stuff for each tile
         return switch (val) {
             case 3    -> "#dae8eeff";
@@ -142,6 +154,7 @@ public class GameController {
         });
         render();
         engine.spawnTile();
+        engine.resetScore();
     }
 
     private void SpawnTileAnm(StackPane tile) {

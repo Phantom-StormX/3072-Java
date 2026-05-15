@@ -1,5 +1,6 @@
 package com.phantomstormx._072java;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.StackPane;
@@ -9,13 +10,19 @@ import javafx.util.Duration;
 public class GameController {
 
     // initializes objects from scene builder to controller
-    @FXML private StackPane tile1,  tile2,  tile3,  tile4;
-    @FXML private StackPane tile5,  tile6,  tile7,  tile8;
-    @FXML private StackPane tile9,  tile10, tile11, tile12;
-    @FXML private StackPane tile13, tile14, tile15, tile16;
+    @FXML
+    private StackPane tile1, tile2, tile3, tile4;
+    @FXML
+    private StackPane tile5, tile6, tile7, tile8;
+    @FXML
+    private StackPane tile9, tile10, tile11, tile12;
+    @FXML
+    private StackPane tile13, tile14, tile15, tile16;
 
-    @FXML private Label scoreLabel;
-    @FXML private Label bestLabel;
+    @FXML
+    private Label scoreLabel;
+    @FXML
+    private Label bestLabel;
     private int bestScore = 0;
     private GameEngine engine;
     @FXML
@@ -25,11 +32,11 @@ public class GameController {
     public void initialize() {
         engine = new GameEngine(); // starts the engine (spawns 2 tiles)
 
-        tiles = new StackPane[][] { // maps the 16 child StackPane(aka tiles) into a 2D array
-                { tile1,  tile2,  tile3,  tile4  },
-                { tile5,  tile6,  tile7,  tile8  },
-                { tile9,  tile10, tile11, tile12 },
-                { tile13, tile14, tile15, tile16 }
+        tiles = new StackPane[][]{ // maps the 16 child StackPane(aka tiles) into a 2D array
+                {tile1, tile2, tile3, tile4},
+                {tile5, tile6, tile7, tile8},
+                {tile9, tile10, tile11, tile12},
+                {tile13, tile14, tile15, tile16}
         };
 
         /*
@@ -56,33 +63,36 @@ public class GameController {
 
         switch (e.getCode()) {
             case LEFT, RIGHT, UP, DOWN -> e.consume(); //stops it from triggering further actions
-            default -> { return;
+            default -> {
+                return;
             }
         }
 
         boolean moved = switch (e.getCode()) { // yoinks the logic about movement from engine and initializes it
-            case LEFT  -> engine.moveLeft();
+            case LEFT -> engine.moveLeft();
             case RIGHT -> engine.moveRight();
-            case UP    -> engine.moveUp();
-            case DOWN  -> engine.moveDown();
-            default    -> false;
+            case UP -> engine.moveUp();
+            case DOWN -> engine.moveDown();
+            default -> false;
         };
         if (moved) { // SPAWNS THE TILES YAYAYAAYYY
             e.consume();
             engine.spawnTile();
+            checkGameState(); // checks to see if there are still available moves
             render(); // updates display
             updateScore();
 
-            for (int[] cell : engine.getLastMerges()){
+            for (int[] cell : engine.getLastMerges()) {
                 TileMergeAnm(tiles[cell[0]][cell[1]]);
             }
 
             int r = engine.getLastRow(); //yoinks the last row and column tracker from engine
             int c = engine.getLastCol();
 
-            if( r >= 0 && c >= 0 ) { // safety check to ensure that the rows and columns indices(index) are non-negative(aka clear)
+            if (r >= 0 && c >= 0) { // safety check to ensure that the rows and columns indices(index) are non-negative(aka clear)
                 SpawnTileAnm(tiles[r][c]);
             }
+
         }
     }
 
@@ -100,7 +110,7 @@ public class GameController {
                     Label lbl = new Label(String.valueOf(value));
                     lbl.setStyle("-fx-font-size: 24px; -fx-font-weight: bold; -fx-background-radius: 6; ");
                     tile.getChildren().add(lbl);
-                    tile.setStyle("-fx-background-radius: 6; -fx-background-color: " + tileColor(value) + ";" );
+                    tile.setStyle("-fx-background-radius: 6; -fx-background-color: " + tileColor(value) + ";");
                 }
             }
         }
@@ -109,7 +119,7 @@ public class GameController {
     private void updateScore() {
         int current = engine.getScore();
         scoreLabel.setText(String.valueOf(current));
-        if(current > bestScore) {
+        if (current > bestScore) {
             bestScore = current;
             bestLabel.setText(String.valueOf(bestScore));
         }
@@ -118,17 +128,17 @@ public class GameController {
 
     private String tileColor(int val) { // colors and stuff for each tile
         return switch (val) {
-            case 3    -> "#dae8eeff";
-            case 6    -> "#b6e3f5ff";
-            case 12   -> "#70b2f1ff";
-            case 24   -> "#5b94ecff";
-            case 48   -> "#4276c7ff";
-            case 96   -> "#275cacff";
-            case 192  -> "#004cc5ff";
-            case 384  -> "#0062ffff";
-            case 768  -> "#0e78b8ff";
+            case 3 -> "#dae8eeff";
+            case 6 -> "#b6e3f5ff";
+            case 12 -> "#70b2f1ff";
+            case 24 -> "#5b94ecff";
+            case 48 -> "#4276c7ff";
+            case 96 -> "#275cacff";
+            case 192 -> "#004cc5ff";
+            case 384 -> "#0062ffff";
+            case 768 -> "#0e78b8ff";
             case 1536 -> "#1889ceff";
-            default   -> "#009fffff";
+            default -> "#009fffff";
         };
     }
 
@@ -158,15 +168,15 @@ public class GameController {
     }
 
     private void SpawnTileAnm(StackPane tile) {
-        // sets the initial tile coord size to 0
+        // sets the initial tile coordinate size to 0
         tile.setScaleX(0);
         tile.setScaleY(0);
         //changes the amount of time it takes for the transition to happen
         ScaleTransition inwardPop = new ScaleTransition(Duration.millis(200), tile);
-        // original tile coord size(empty)
+        // original tile coordinate size(empty)
         inwardPop.setFromX(0);
         inwardPop.setFromY(0);
-        // final tile coord size
+        // final tile coordinate size
         inwardPop.setToX(1.0);
         inwardPop.setToY(1.0);
         inwardPop.play();
@@ -185,4 +195,15 @@ public class GameController {
 
     }
 
+    public void checkGameState() {
+        if (engine.isGameOver()) {
+            Alert gameOver = new Alert(Alert.AlertType.INFORMATION);
+            gameOver.setTitle("3072");
+            gameOver.setHeaderText(null);
+            gameOver.setContentText("Game Over! There are no more possible moves");
+            gameOver.showAndWait();
+
+        }
+    }
 }
+

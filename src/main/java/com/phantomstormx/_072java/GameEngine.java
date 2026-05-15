@@ -1,6 +1,5 @@
 package com.phantomstormx._072java;
 
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -11,7 +10,7 @@ import java.util.Random;
     */
 
 public class GameEngine {
-private int score;
+    private int score;
 
     int[][] grid = new int[4][4]; // creates a grid with 4 rows and 4 columns
     Random rand = new Random(); // self explainable
@@ -200,5 +199,28 @@ private int score;
     public void resetScore() {
         score = 0;
     }
-}
 
+    public boolean isGameOver(){
+        // 1. Check for any empty cells (value 0)
+        for (int r = 0; r < 4; r++) {
+            for (int c = 0; c < 4; c++) {
+                if (grid[r][c] == 0) return false;
+            }
+        }
+
+        // 2. Check for possible merges (adjacent tiles with same value)
+        for (int r = 0; r < 4; r++) {
+            for (int c = 0; c < 4; c++) {
+                int current = grid[r][c];
+                // Check right neighbor
+                if (c < 3 && current == grid[r][c + 1]) return false;
+                // Check bottom neighbor
+                if (r < 3 && current == grid[r + 1][c]) return false;
+            }
+        }
+
+        // No empty cells and no merges possible
+        return true;
+    }
+
+}

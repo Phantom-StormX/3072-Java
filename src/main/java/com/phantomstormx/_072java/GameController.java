@@ -1,7 +1,6 @@
 package com.phantomstormx._072java;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.StackPane;
@@ -16,7 +15,7 @@ public class GameController {
     @FXML private StackPane tile9,  tile10, tile11, tile12;
     @FXML private StackPane tile13, tile14, tile15, tile16;
     @FXML private Button playAgain;
-    @FXML private Label scoreLabel;
+    @FXML private String scoreLabel;
     private GameEngine engine;
     @FXML
     private StackPane[][] tiles;

@@ -12,7 +12,7 @@
 Current and planned features may include:
 total score, and best/high score
 theme change button
-exit button(YW @rgeorge-coach >:þ)
+exit button(YW [@rgeorge-coach] >:þ)
 instructions page
 new game/reset game button
 undo button

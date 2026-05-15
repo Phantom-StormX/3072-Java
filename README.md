@@ -32,9 +32,9 @@ This keeps the UI, logic, and interaction handling separate and easier to mainta
 
 ## How to Run
 
-1. Open the project in IntelliJ IDEA.
+1. Open the project by cloneing the repo in IntelliJ IDEA.
 2. Make sure the project SDK is set to Java 25.
-3. Run the main application class from the IDE.
+3. Run the launcher class from the IDE.
 
 If you are running from a compiled output folder, make sure the application is launched from the correct main entry point.
 

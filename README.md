@@ -81,7 +81,12 @@ This helps keep the interface organized and easier to resize or maintain.
 - Play again
   - Also hard to implement it into the code because we did it last, and when we had to push this code it disappeared, so we had to fix/redo that.
 - Math
-  - We had to figure out what the 3 factors were, and we thought that it ended with 3036 at first(it wasn't), then 3056(it wasn't), and we finally played the game to find out that it was 3072.     
+  - We had to figure out what the 3 factors were, and we thought that it ended with 3036 at first(it wasn't), then 3056(it wasn't), and we finally played the game to find out that it was 3072.
+- Endings
+  - it pops up with an alert when the grid becomes completely full and you cannot make anymore moves
+  - I have no idea what happens after you reach 3072, and if you can get a higher number
+    - I'd assume you cannot get a higher number, but only because we did not set any colors for the numbers after 3072
+  - It does not show any alert when you reach 3072.     
 
 
 ## Credentials 

@@ -192,4 +192,13 @@ private int score;
     public int[][] getGrid() {
         return grid;
     }
+
+    public int getScore() {
+        return score;
+    }
+
+    public void resetScore() {
+        score = 0;
+    }
 }
+

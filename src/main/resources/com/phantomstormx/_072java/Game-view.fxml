@@ -68,15 +68,18 @@
     <VBox>
         <HBox alignment="CENTER" spacing="16.0">
 
-            <VBox alignment="CENTER" spacing="2.0" style="-fx-background-color: #03045E; -fx-background-radius: 6; -fx-padding: 8 20 8 20; -fx-border-style: solid; -fx-border-color: #FFFFFF; -fx-border-width: 2px; -fx-border-radius: 6;">
-                <Label style="-fx-font-size: 11px; -fx-font-weight: bold; -fx-text-fill: #f9f6f2;" text="SCORE" />
-                <Label style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: white;" text="0" />
+            <VBox alignment="CENTER" prefHeight="64.0" prefWidth="142.0" spacing="2.0" style="-fx-background-color: #03045E; -fx-background-radius: 6; -fx-padding: 8 20 8 20; -fx-border-style: solid; -fx-border-color: #FFFFFF; -fx-border-width: 2px; -fx-border-radius: 6;">
+                <Label prefHeight="14.0" prefWidth="104.0" style="-fx-font-size: 11px; -fx-font-weight: bold; -fx-text-fill: #f9f6f2;" text="             SCORE" textAlignment="CENTER" />
+                <Label fx:id="scoreLabel" prefHeight="28.0" prefWidth="142.0" style="22px; -fx-font-weight: bold; -fx-text-fill: white;">
+               <font>
+                  <Font size="23.0" />
+               </font></Label>
             </VBox>
 
             <Button fx:id="playAgain" onAction="#playAgain" style="-fx-background-color: #0077B6; -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold; -fx-background-radius: 6; -fx-padding: 10 18 10 18; -fx-cursor: hand; -fx-border-color: #FFFFFF; -fx-border-style: solid; -fx-border-width: 2px; -fx-border-radius: 6;" text="Play Again" />
-            <VBox alignment="CENTER" layoutX="263.0" layoutY="10.0" spacing="2.0" style="-fx-background-color: #03045E; -fx-background-radius: 6; -fx-padding: 8 20 8 20; -fx-border-style: solid; -fx-border-color: #FFFFFF; -fx-border-width: 2px; -fx-border-radius: 6;">
-                <Label style="-fx-font-size: 11px; -fx-font-weight: bold; -fx-text-fill: #f9f6f2;" text="BEST" />
-                <Label style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: white;" text="0" />
+            <VBox alignment="CENTER" layoutX="263.0" layoutY="10.0" prefHeight="64.0" prefWidth="142.0" spacing="2.0" style="-fx-background-color: #03045E; -fx-background-radius: 6; -fx-padding: 8 20 8 20; -fx-border-style: solid; -fx-border-color: #FFFFFF; -fx-border-width: 2px; -fx-border-radius: 6;">
+                <Label prefHeight="14.0" prefWidth="109.0" style="-fx-font-size: 11px; -fx-font-weight: bold; -fx-text-fill: #f9f6f2;" text="               BEST" />
+                <Label fx:id="bestLabel" prefHeight="28.0" prefWidth="118.0" style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: white;" text=" " />
             </VBox>
 
         </HBox>
